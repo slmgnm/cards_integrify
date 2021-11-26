@@ -1,24 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
-
+import React, { useEffect, useState, useRef } from "react";
+import axios from "axios";
+import CardsList from "./CardsList";
+import "./App.css";
 function App() {
+  const [cards, setcards] = useState([]);
+
+  useEffect(() => {
+    axios.get("https://jsonplaceholder.typicode.com/users").then((res) => {
+      const users = 
+        res.data.map((user, index) => {
+          
+          return {
+            id: `${index}-${Date.now()}`,
+            user: user.name,
+            username: user.username,
+          };
+        }
+      );
+      setcards(users);
+      console.log(users);
+    });
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <div className='container'>
+        <CardsList cards={cards} />
+      </div>
+    </>
   );
 }
 
