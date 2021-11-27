@@ -14,6 +14,7 @@ function App() {
             id: `${index}-${Date.now()}`,
             user: user.name,
             username: user.username,
+            website:user.website,
           };
         }
       );
@@ -25,7 +26,7 @@ function App() {
   return (
     <>
       <div className='container'>
-        <CardsList cards={cards} />
+        <CardsList cards={cards}  />
       </div>
     </>
   );
