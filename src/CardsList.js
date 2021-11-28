@@ -3,7 +3,7 @@ import Card from "./Card";
 
 const CardsList = ({ cards }) => {
   return (
-    <div className='card-grid'>
+    <div className='front'>
       {cards.map((card) => {
         return <Card card={card} key={card.id}  />;
       })}

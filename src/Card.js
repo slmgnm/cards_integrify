@@ -1,40 +1,17 @@
-import React, { useState, useEffect, useRef } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import FullCard from "./FullCard";
-const Card = ({ card, users }) => {
-  const [height, setHeight] = useState("initial");
-  const frontEl = useRef();
-
+const Card = ({ card }) => {
   function getFirstCharecter(str) {
     let firstChar = [];
     firstChar.push(str.charAt());
-    var str = JSON.stringify(firstChar);
+    // var str = JSON.stringify(firstChar);
 
     return firstChar;
   }
   const firstChar = getFirstCharecter(card.user);
 
-  const maxHieght = () => {
-    const frontHieght = frontEl.current.getBoundingClientRect().height;
-
-    setHeight(() => Math.max(frontHieght, 100));
-  };
-  useEffect(maxHieght, [
-    card.user,
-    card.username,
-    card.email,
-    card.website,
-    card.address,
-    card.company,
-    card.phone,
-  ]);
-  useEffect(() => {
-    window.addEventListener("resize", maxHieght);
-    return () => window.removeEventListener("resize", maxHieght);
-  }, []);
-
   return (
-    <div className='card-grid' ref={frontEl}>
+    <div className='card-grid'>
       <div className='card'>
         <div className='char'>{firstChar}</div>{" "}
       </div>
