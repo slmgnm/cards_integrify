@@ -1,5 +1,7 @@
 import React from "react";
+import Button from "./Button";
 import { useParams } from "react-router";
+
 export default function FullCard({ cards }) {
   const { user } = useParams();
   return (
@@ -8,6 +10,7 @@ export default function FullCard({ cards }) {
         .filter((card) => card.user === user)
         .map((card, index) => (
           <div key={index}>
+            
             <h3>{`-Name: ${card.user}`}</h3>
             <h3>{`-Userame: ${card.username}`}</h3>
             <h3>{`-Email: ${card.email}`}</h3>
@@ -29,6 +32,7 @@ export default function FullCard({ cards }) {
                 <h3> {card.address.zipcode}</h3>
               </li>
             </ul>
+            <Button>button</Button>
           </div>
         ))}
     </div>

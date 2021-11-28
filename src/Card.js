@@ -17,7 +17,7 @@ const Card = ({ card }) => {
       </div>
       <div className='card1'>{card.user}</div>
       <div className='card2'> @{card.username}</div>
-      <div className='card3'> http://{card.website}</div>
+      <div className='card3'> {`http://${card.website}`}</div>
       <div className='card'>
         <Link className='btn' to={`/cards/${card.user}`}>
           More Details
